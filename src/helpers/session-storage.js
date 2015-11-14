@@ -1,3 +1,3 @@
-export const get = ({prefix, key}) => prefix ? sessionStorage.getItem(`${prefix}${key}`) : sessionStorage.getItem(`${key}`);
-export const set = ({prefix, key, data}) => prefix ? sessionStorage.setItem(`${prefix}${key}`, data) : sessionStorage.setItem(`${key}`, data);
-export const remove = ({prefix, key}) => prefix ? sessionStorage.removeItem(`${prefix}${key}`) : sessionStorage.removeItem(`${key}`);
+export const get = ({key}) =>  sessionStorage.getItem(key);
+export const set = ({key, data}) => sessionStorage.setItem(key, data);
+export const remove = ({key}) => sessionStorage.removeItem(key);
