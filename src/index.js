@@ -1,7 +1,12 @@
 import {get, set, remove} from "./helpers/session-storage";
 
-export default function actionRecorder({key, transform, limit}) {
+export default function actionRecorder({key, transform, limit, reset}) {
+	let callCount = 0;
 	return () => (next) => (action) => {
+		if (reset && !callCount) {
+			remove({key});
+		}
+		callCount += 1;
 		let actions = [];
 		const transformedAction = transform ? transform(action) : action;
 		let actionToStore = Object.keys(transformedAction).reduce((actionData, item) => {
