@@ -2,7 +2,7 @@ import {get, set, remove} from "./helpers/session-storage";
 
 export default function actionRecorder({key, transform, limit, reset}) {
 	let callCount = 0;
-	return (getState) => (next) => (action) => {
+	return ({getState}) => (next) => (action) => {
 		if (reset && !callCount) {
 			remove({key});
 		}
